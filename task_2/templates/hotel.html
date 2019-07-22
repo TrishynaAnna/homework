@@ -1,0 +1,33 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+
+
+ <div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Hotel id</th>
+                <th scope="col">Renavation date</th>
+                <th scope="col">Hotel_address</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for hotel in hotels %}
+            <tr >
+                <td> {{hotel.0}} </td>
+                <td> {{hotel.1.date().strftime("%Y/%m/%d")}} </td>
+                <td> {{hotel.2}} </td>
+                <td>
+                    <button type="button" class="btn btn-warning" name="btn_edit_hotel" data-hotel_id="{{hotel.0}}">Edit</button>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+ </div>
+
+    <script src="{{ url_for('static', filename='js/hotel.js') }}"></script>
+
+{% endblock %}

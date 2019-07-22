@@ -1,0 +1,38 @@
+
+
+{% extends "index.html" %}
+
+{% block content %}
+
+
+
+ <div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Student code</th>
+                <th scope="col">Student name</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for student in students %}
+            <tr >
+                <td> {{student.student_code}} </td>
+                <td> {{student.student_name}} </td>
+                <td>
+                    <button type="button" class="btn btn-warning" name="btn_edit_student" data-student_code="{{student.student_code}}">Edit</button>
+                    <button type="button" class="btn btn-danger" name="btn_delete_student" data-student_code="{{student.student_code}}">Delete</button>
+                    <button type="button" class="btn btn-success" name="btn_new_work" data-student_code="{{student.student_code}}">New Work</button>
+                </td>
+            </tr>
+        {% endfor %}
+            <tr>
+                <td> <button type="button" class="btn btn-success" name="btn_new_student">New Student</button> </td>
+            </tr>
+        </tbody>
+    </table>
+ </div>
+
+    <script src="{{ url_for('static', filename='js/student.js') }}"></script>
+
+{% endblock %}

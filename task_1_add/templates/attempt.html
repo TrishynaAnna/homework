@@ -1,0 +1,36 @@
+
+
+{% extends "index.html" %}
+
+{% block content %}
+
+
+
+ <div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Work title</th>
+                <th scope="col">Mark date</th>
+                <th scope="col">Mark value</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for attempt in attempts %}
+            <tr >
+                <td> {{attempt.work_title_fk}} </td>
+                <td> {{attempt.mark_date}} </td>
+                <td> {{attempt.mark_value}} </td>
+                <td>
+                    <button type="button" class="btn btn-warning" name="btn_edit_attempt" data-work_title_fk="{{attempt.work_title_fk}}" data-mark_date="{{attempt.mark_date}}">Edit</button>
+                    <button type="button" class="btn btn-danger" name="btn_delete_attempt" data-work_title_fk="{{attempt.work_title_fk}}" data-mark_date="{{attempt.mark_date}}">Delete</button>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+ </div>
+
+    <script src="{{ url_for('static', filename='js/attempt.js') }}"></script>
+
+{% endblock %}

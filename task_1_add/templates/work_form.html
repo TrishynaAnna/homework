@@ -1,0 +1,68 @@
+
+
+{% extends "index.html" %}
+
+{% block content %}
+
+<!--https://www.codeply.com/go/nhbdi2FkJm-->
+
+
+<div class="col-md-6 mx-auto">
+
+    <!-- form card login -->
+    <div class="card rounded-0">
+
+        <div class="card-header">
+            <h3 class="mb-0">{{form_name}}</h3>
+        </div>
+        <div class="card-body">
+
+            <form class="form"  action = "/{{action}}" method = post >
+                {{ form.hidden_tag() }}
+
+            {% if action == "new_work"%}
+
+                <div class="form-group">
+                    {{ form.work_title.label }}
+                    {{ form.work_title(class_="form-control") }}
+
+                    {% if form.work_title.errors%}
+                        <div class="alert alert-danger" role="alert">
+                            {% for message in form.work_title.errors %}
+                                 <div>{{ message }}</div>
+                            {% endfor %}
+                        </div>
+                    {%endif%}
+                </div>
+                {% else %}
+
+                <div class="form-group">
+                    {{ form.student_code_fk.label }}
+                    {{ form.student_code_fk(class_="form-control") }}
+
+                    {% if form.student_code_fk.errors%}
+                        <div class="alert alert-danger" role="alert">
+                            {% for message in form.student_code_fk.errors %}
+                                 <div>{{ message }}</div>
+                            {% endfor %}
+                        </div>
+                    {%endif%}
+                </div>
+
+            {% endif %}
+
+                {{ form.submit(class_="btn btn-success") }}
+            </form>
+        </div>
+        <!--/card-block-->
+    </div>
+    <!-- /form card login -->
+
+</div>
+
+</div>
+
+
+
+
+{% endblock %}
